@@ -135,6 +135,7 @@ class TaskManager:
             print(f"Error updating task: {e}")
             return False
         
+    #Mark a specific task as complete
     def mark_task_complete(self, task_id):
         if not self.connection:
             print("Database connection failed")
@@ -155,6 +156,7 @@ class TaskManager:
             print(f"Error marking task as complete: {e}")
             return False
     
+    #Delete a specific task
     def delete_task(self, task_id):
         if not self.connection:
             print("Database connection failed")
@@ -175,11 +177,13 @@ class TaskManager:
             print(f"Error deleting task: {e}")
             return False
     
+    #Ends the database connection
     def close_connection(self):
         if self.connection and self.connection.is_connected():
             self.connection.close()
             print("Database connection closed")
 
+# Display menu for task management options
 def display_menu():
     print("\nTask Manager Menu:")
     print("1. Create a new task")
@@ -189,6 +193,7 @@ def display_menu():
     print("5. Delete a task")
     print("6. Exit")
 
+# Display, menu for sort options for tasks
 def sort_menu():
     print("\nSort Options:")
     print("1. Sort by Default (Creation Timestamp)")
@@ -306,7 +311,7 @@ def main():
                 print("Invalid task ID")
 
         elif choice == '4':
-            # View specific task
+            # Mark task as complete
             task_id = input("Enter task ID to mark as Complete: ")
             try:
                 task_id = int(task_id)
